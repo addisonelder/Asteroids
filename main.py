@@ -3,18 +3,26 @@
 # throughout this file
 import pygame
 from constants import *
+from player import Player
 
 def main():
     pygame.init() # initilize the pygame
+
+    # print some stuff for the user
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    running = True
+    clock = pygame.time.Clock()
+    dt = 0
 
-    while running:
+    # create the ship (player) object
+    ship = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2)
+
+# this is the game loop
+    while True:
         # exit the game when we close the game window
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -22,7 +30,13 @@ def main():
 
         # render the game
         screen.fill("black")
+        ship.draw(screen)
+
+        # update the frame
         pygame.display.flip()
+ 
+        # limit framerate to 60 fps
+        dt = clock.tick(60) / 1000
 
 
 if __name__ == "__main__":
