@@ -4,6 +4,8 @@
 import pygame
 from constants import *
 from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 def main():
     pygame.init() # initilize the pygame
@@ -23,16 +25,20 @@ def main():
     # create the pygame groups
     updatables = pygame.sprite.Group()
     drawables = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
 
-    # set containers for the Player class
+    # set containers attributes
     Player.containers = (updatables, drawables)
+    Asteroid.containers = (asteroids, updatables, drawables)
+    AsteroidField.containers = (updatables)
 
     # create the ship (player) object
     ship = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2)
+    asteroid_field = AsteroidField()
 
 # this is the game loop
     while True:
-        # exit the game when we close the game window
+        # exit the game loop when we close the game window
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
