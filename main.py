@@ -28,11 +28,12 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        # render the game
+        # load the elements that should get rendered
         screen.fill("black")
         ship.draw(screen)
+        ship.update(dt)
 
-        # update the frame
+        # render the frame
         pygame.display.flip()
  
         # limit framerate to 60 fps
