@@ -36,7 +36,7 @@ def main():
     AsteroidField.containers = (updatables)
     Shot.containers = (shots, updatables, drawables)
 
-    # create the ship (player) object
+    # create the initial obejcts
     ship = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2)
     asteroid_field = AsteroidField()
 
