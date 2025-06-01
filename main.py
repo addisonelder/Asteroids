@@ -7,6 +7,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 def main():
     pygame.init() # initilize the pygame
@@ -27,15 +28,18 @@ def main():
     updatables = pygame.sprite.Group()
     drawables = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
 
     # set containers attributes
     Player.containers = (updatables, drawables)
     Asteroid.containers = (asteroids, updatables, drawables)
     AsteroidField.containers = (updatables)
+    Shot.containers = (shots, updatables, drawables)
 
     # create the ship (player) object
     ship = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2)
     asteroid_field = AsteroidField()
+
 
 # this is the game loop
     while True:
@@ -53,8 +57,7 @@ def main():
 
         for asteroid in asteroids:
             if asteroid.check_collision(ship):
-                print("Game Over!")
-                sys.exit()
+                sys.exit("Game Over!")
 
         # render the frame
         pygame.display.flip()
