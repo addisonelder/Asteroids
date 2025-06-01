@@ -16,7 +16,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     clock = pygame.time.Clock()
-    dt = 0
+    dt = 0 # 'delta time': time since last frame has rendered
 
     # create the ship (player) object
     ship = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2)
