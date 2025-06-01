@@ -13,3 +13,6 @@ class Asteroid(CircleShape):
                            radius = self.radius,
                            width = 2,
                            )
+        
+    def update(self, dt):
+        self.position += self.velocity * dt
