@@ -59,6 +59,11 @@ def main():
             if asteroid.check_collision(ship):
                 sys.exit("Game Over!")
 
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.check_collision(shot):
+                    asteroid.split()
+
         # render the frame
         pygame.display.flip()
  
